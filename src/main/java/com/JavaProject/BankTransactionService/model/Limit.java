@@ -22,4 +22,8 @@ public class Limit extends BaseModel{
     private BigDecimal limitSum;
     private Date limitDateTime;
     private String limitCurrencyShortName;
+    private String expenseCategory;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User user;
 }

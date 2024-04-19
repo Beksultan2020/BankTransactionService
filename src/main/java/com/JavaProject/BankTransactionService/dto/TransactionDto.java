@@ -20,4 +20,5 @@ public class TransactionDto {
     private String expenseCategory;
     private Date dateTime;
     private boolean limitExceeded;
+    private UserDto userDto;
 }

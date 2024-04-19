@@ -18,8 +18,6 @@ import java.util.List;
 @Table(name = "users")
 public class User extends BaseModel {
     private String fullName;
-    private String email;
-    private String password;
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<Transaction> transactions;

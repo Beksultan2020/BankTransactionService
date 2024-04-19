@@ -16,7 +16,6 @@ import java.util.List;
 public class UserDto {
     private Long id;
     private String fullName;
-    private String email;
     private List<TransactionDto> transactionDtos;
     private List<Limit> limits;
 }

@@ -1,6 +1,8 @@
 package com.JavaProject.BankTransactionService.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -20,4 +22,7 @@ public class Transaction extends BaseModel {
     private String expenseCategory;
     private Date dateTime;
     private boolean limitExceeded;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User user;
 }
