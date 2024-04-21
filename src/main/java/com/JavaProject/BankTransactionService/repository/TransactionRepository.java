@@ -13,4 +13,5 @@ import java.util.List;
 @Transactional
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
     List<Transaction> findByUserAndLimitExceededTrue(User user);
+    List<Transaction> findByUserAndExpenseCategory(User user,String expenseCategory);
 }

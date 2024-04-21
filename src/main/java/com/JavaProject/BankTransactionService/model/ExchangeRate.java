@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,4 +18,5 @@ public class ExchangeRate extends BaseModel{
     private String fromCurrency;
     private String toCurrency;
     private BigDecimal rate;
+    private LocalDate date;
 }

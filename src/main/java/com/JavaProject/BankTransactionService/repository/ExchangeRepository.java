@@ -11,5 +11,5 @@ import java.util.Optional;
 @Repository
 @Transactional
 public interface ExchangeRepository extends JpaRepository<ExchangeRate,Long> {
-    Optional<ExchangeRate> findByFromCurrencyAndToCurrency(String fromCurrency, String toCurrency);
+    Optional<ExchangeRate> findByFromCurrencyAndToCurrencyOrderByDateDesc(String fromCurrency, String toCurrency);
 }

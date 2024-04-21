@@ -11,6 +11,7 @@ import com.JavaProject.BankTransactionService.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -21,6 +22,10 @@ public class TransactionServiceImpl implements TransactionService {
     private TransactionMapper transactionMapper;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private LimitServiceImpl limitService;
+    @Autowired
+    private ExchangeRateServiceImpl exchangeRateService;
 
     @Override
     public List<TransactionDto> getAllTransactions() {
@@ -43,8 +48,14 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public void addTransaction(Transaction transaction) {
-        transactionRepository.save(transaction);
+    public TransactionDto createTransaction(Transaction transaction) {
+        BigDecimal limit = limitService.getLimit(transaction.getUser(), transaction.getExpenseCategory());
+        BigDecimal sumInUsd = exchangeRateService.getExchangeRate(transaction.getCurrencyShortname(), "USD").multiply(transaction.getSum());
+        if (sumInUsd.compareTo(limit) > 0) {
+            transaction.setLimitExceeded(true);
+        }
+        Transaction savedTransaction = transactionRepository.save(transaction);
+        return transactionMapper.toDto(savedTransaction);
     }
 
     @Override

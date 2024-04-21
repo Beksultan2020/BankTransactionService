@@ -13,7 +13,7 @@ public interface TransactionService {
 
     TransactionDto getTransactionById(Long id);
 
-    void addTransaction(Transaction transaction);
+    TransactionDto createTransaction(Transaction transaction);
 
     void deleteTransactionById(Long id);
 }

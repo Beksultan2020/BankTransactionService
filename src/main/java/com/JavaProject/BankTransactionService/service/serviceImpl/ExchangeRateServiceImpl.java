@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -21,12 +22,16 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 
     @Override
     public BigDecimal getExchangeRate(String fromCurrency, String toCurrency) {
-        Optional<ExchangeRate> optionalExchangeRate = exchangeRepository.findByFromCurrencyAndToCurrency(fromCurrency, toCurrency);
+        Optional<ExchangeRate> optionalExchangeRate = exchangeRepository.findByFromCurrencyAndToCurrencyOrderByDateDesc(fromCurrency, toCurrency);
         if (optionalExchangeRate.isPresent()){
             return optionalExchangeRate.get().getRate();
         }else {
             BigDecimal rate=getRateFromExternalAPI(fromCurrency,toCurrency);
-            ExchangeRate exchangeRate=new ExchangeRate(fromCurrency,toCurrency,rate);
+            ExchangeRate exchangeRate=new ExchangeRate();
+            exchangeRate.setFromCurrency(fromCurrency);
+            exchangeRate.setToCurrency(toCurrency);
+            exchangeRate.setRate(rate);
+            exchangeRate.setDate(LocalDate.now());
             exchangeRepository.save(exchangeRate);
             return rate;
         }

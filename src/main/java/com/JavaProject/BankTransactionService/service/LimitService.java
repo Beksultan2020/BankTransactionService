@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface LimitService {
     BigDecimal getLimit(User user,String expenseCategory);
+
+    void setLimit(User user, String expenseCategory, BigDecimal newLimit);
 }

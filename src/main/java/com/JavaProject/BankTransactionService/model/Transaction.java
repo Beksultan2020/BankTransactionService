@@ -6,7 +6,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -20,7 +20,7 @@ public class Transaction extends BaseModel {
     private String currencyShortname;
     private BigDecimal sum;
     private String expenseCategory;
-    private Date dateTime;
+    private LocalDateTime dateTime;
     private boolean limitExceeded;
 
     @ManyToOne(fetch = FetchType.EAGER)

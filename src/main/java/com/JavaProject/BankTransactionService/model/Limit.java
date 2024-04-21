@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -20,8 +20,8 @@ import java.util.Date;
 @Table(name = "limits")
 public class Limit extends BaseModel{
     private BigDecimal limitSum;
-    private Date limitDateTime;
-    private String limitCurrencyShortName;
+    private LocalDateTime limitDateTime;
+//    private String limitCurrencyShortName;
     private String expenseCategory;
 
     @ManyToOne(fetch = FetchType.EAGER)
