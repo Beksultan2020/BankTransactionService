@@ -23,6 +23,7 @@ public class Transaction extends BaseModel {
     private String expenseCategory;
     private LocalDateTime dateTime;
     private boolean limitExceeded;
+    private boolean limitExceededMonthly;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;

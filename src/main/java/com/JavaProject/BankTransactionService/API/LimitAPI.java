@@ -25,6 +25,6 @@ public class LimitAPI {
     @GetMapping("/{userId}/{expenseCategory}")
     public BigDecimal getLimit(@PathVariable Long userId, @PathVariable String expenseCategory) {
         User user = userRepository.findById(userId).orElseThrow();
-        return limitService.getLimit(user, expenseCategory);
+        return limitService.getMonthlyLimit(user, expenseCategory);
     }
 }

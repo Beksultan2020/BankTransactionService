@@ -9,7 +9,7 @@ import java.util.List;
 public interface TransactionService {
     List<TransactionDto> getAllTransactions();
 
-    List<TransactionDto> getTransactionsExceedingLimit(User user);
+    List<TransactionDto> getTransactionsExceedingLimit(Long userId, String expenseCategory);
 
     TransactionDto getTransactionById(Long id);
 

@@ -7,7 +7,9 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface LimitService {
-    BigDecimal getLimit(User user,String expenseCategory);
-
     void setLimit(User user, String expenseCategory, BigDecimal newLimit);
+
+    Limit getLastLimit(User user, String expenseCategory);
+
+    BigDecimal getMonthlyLimit(User user, String expenseCategory);
 }

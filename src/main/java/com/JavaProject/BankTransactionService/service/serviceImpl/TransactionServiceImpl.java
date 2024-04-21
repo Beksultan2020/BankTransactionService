@@ -2,6 +2,7 @@ package com.JavaProject.BankTransactionService.service.serviceImpl;
 
 import com.JavaProject.BankTransactionService.dto.TransactionDto;
 import com.JavaProject.BankTransactionService.mapper.TransactionMapper;
+import com.JavaProject.BankTransactionService.model.Limit;
 import com.JavaProject.BankTransactionService.model.Transaction;
 import com.JavaProject.BankTransactionService.model.User;
 import com.JavaProject.BankTransactionService.repository.TransactionRepository;
@@ -30,10 +31,11 @@ public class TransactionServiceImpl implements TransactionService {
         return transactionMapper.toDtoList(transactions);
     }
 
+
     @Override
-    public List<TransactionDto> getTransactionsExceedingLimit(User user) {
-        User user1 = userRepository.findById(user.getId()).orElseThrow();
-        List<Transaction> transactions = transactionRepository.findByUserAndLimitExceededTrue(user1);
+    public List<TransactionDto> getTransactionsExceedingLimit(Long userId, String expenseCategory) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        List<Transaction> transactions = transactionRepository.findByUserAndExpenseCategory(user, expenseCategory);
         return transactionMapper.toDtoList(transactions);
     }
 
@@ -45,11 +47,15 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public void createTransaction(Transaction transaction) {
-        BigDecimal limit = limitService.getLimit(transaction.getUser(), transaction.getExpenseCategory());
         BigDecimal sumInUsd = exchangeRateService.getExchangeRate(transaction.getCurrencyShortname(), "USD").multiply(transaction.getSum());
-        if (sumInUsd.compareTo(limit) > 0) {
-            transaction.setLimitExceeded(true);
+
+        Limit lastLimit = limitService.getLastLimit(transaction.getUser(), transaction.getExpenseCategory());
+        if (lastLimit != null) {
+            if (sumInUsd.compareTo(lastLimit.getLimitSum()) > 0) {
+                transaction.setLimitExceeded(true);
+            }
         }
+
         User user = userRepository.findById(transaction.getUser().getId()).orElseThrow(() -> new IllegalArgumentException("User not found"));
         transaction.setUser(user);
         transactionRepository.save(transaction);

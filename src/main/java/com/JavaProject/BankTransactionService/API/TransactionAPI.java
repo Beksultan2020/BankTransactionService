@@ -25,9 +25,10 @@ public class TransactionAPI {
     public TransactionDto getTransactionById(@PathVariable(value = "id") Long id) {
         return transactionServiceImpl.getTransactionById(id);
     }
-    @GetMapping("/exceededLimit")
-    public List<TransactionDto> getTransactionsExceedingLimit(@RequestBody User user){
-        return transactionServiceImpl.getTransactionsExceedingLimit(user);
+
+    @GetMapping("/exceededLimit/{userId}/{expenseCategory}")
+    public List<TransactionDto> getTransactionsExceedingLimit(@PathVariable Long userId, @PathVariable String expenseCategory) {
+        return transactionServiceImpl.getTransactionsExceedingLimit(userId, expenseCategory);
     }
 
     @PostMapping

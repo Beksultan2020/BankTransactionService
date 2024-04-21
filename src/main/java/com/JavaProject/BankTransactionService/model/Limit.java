@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
 public class Limit extends BaseModel{
     private BigDecimal limitSum;
     private LocalDateTime limitDateTime;
-//    private String limitCurrencyShortName;
     private String expenseCategory;
 
     @ManyToOne(fetch = FetchType.EAGER)
