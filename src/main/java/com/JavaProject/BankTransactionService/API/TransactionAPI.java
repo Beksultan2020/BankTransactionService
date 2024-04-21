@@ -31,8 +31,8 @@ public class TransactionAPI {
     }
 
     @PostMapping
-    public void createTransaction(@RequestBody Transaction transaction) {
-        transactionServiceImpl.createTransaction(transaction);
+    public TransactionDto createTransaction(@RequestBody Transaction transaction) {
+        return transactionServiceImpl.createTransaction(transaction);
     }
 
     @DeleteMapping("{id}")
