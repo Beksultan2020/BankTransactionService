@@ -1,18 +1,17 @@
 package com.JavaProject.BankTransactionService.service;
 
-import com.JavaProject.BankTransactionService.dto.UserDto;
 import com.JavaProject.BankTransactionService.model.User;
 
 import java.util.List;
 
 public interface UserService {
-    List<UserDto> getAllUsers();
+    List<User> getAllUsers();
 
-    UserDto getUserById(Long id);
+    User getUserById(Long id);
 
     void addUser(User user);
 
-    UserDto updateUser(UserDto userDto);
+    User updateUser(User userDto);
 
     void deleteUser(Long id);
 }

@@ -1,6 +1,7 @@
 package com.JavaProject.BankTransactionService.dto;
 
 
+import com.JavaProject.BankTransactionService.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,5 +21,5 @@ public class TransactionDto {
     private String expenseCategory;
     private Date dateTime;
     private boolean limitExceeded;
-    private UserDto userDto;
+    private User user;
 }

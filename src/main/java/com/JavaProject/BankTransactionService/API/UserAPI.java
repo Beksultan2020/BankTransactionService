@@ -1,6 +1,6 @@
 package com.JavaProject.BankTransactionService.API;
 
-import com.JavaProject.BankTransactionService.dto.UserDto;
+
 import com.JavaProject.BankTransactionService.model.User;
 import com.JavaProject.BankTransactionService.service.serviceImpl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,12 @@ public class UserAPI {
     private UserServiceImpl userServiceImpl;
 
     @GetMapping
-    public List<UserDto> getAllUsers(){
+    public List<User> getAllUsers(){
         return userServiceImpl.getAllUsers();
     }
 
     @GetMapping("{id}")
-    public UserDto getUserById(@PathVariable(value = "id") Long id){
+    public User getUserById(@PathVariable(value = "id") Long id){
         return userServiceImpl.getUserById(id);
     }
 
@@ -31,8 +31,8 @@ public class UserAPI {
     }
 
     @PutMapping
-    public UserDto updateUser(@RequestBody UserDto userDto){
-        return userServiceImpl.updateUser(userDto);
+    public User updateUser(@RequestBody User user){
+        return userServiceImpl.updateUser(user);
     }
 
     @DeleteMapping("{id}")

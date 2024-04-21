@@ -1,7 +1,6 @@
 package com.JavaProject.BankTransactionService.service.serviceImpl;
 
-import com.JavaProject.BankTransactionService.dto.UserDto;
-import com.JavaProject.BankTransactionService.mapper.UserMapper;
+
 import com.JavaProject.BankTransactionService.model.User;
 import com.JavaProject.BankTransactionService.repository.UserRepository;
 import com.JavaProject.BankTransactionService.service.UserService;
@@ -14,18 +13,15 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private UserMapper userMapper;
     @Override
-    public List<UserDto> getAllUsers() {
-        List<User> users=userRepository.findAll();
-        return userMapper.toDtoList(users);
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     @Override
-    public UserDto getUserById(Long id) {
-        User user=userRepository.findById(id).orElseThrow();
-        return userMapper.toDto(user);
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElseThrow();
+
     }
 
     @Override
@@ -34,10 +30,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto updateUser(UserDto userDto) {
-        User user=userRepository.findById(userDto.getId()).orElseThrow();
-        user.setFullName(userDto.getFullName());
-        return userMapper.toDto(user);
+    public User updateUser(User user) {
+        User updatedUser=userRepository.findById(user.getId()).orElseThrow();
+        updatedUser.setFullName(user.getFullName());
+        return userRepository.save(updatedUser);
     }
 
     @Override
