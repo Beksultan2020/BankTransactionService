@@ -3,7 +3,6 @@ package com.JavaProject.BankTransactionService.API;
 
 import com.JavaProject.BankTransactionService.dto.TransactionDto;
 import com.JavaProject.BankTransactionService.model.Transaction;
-import com.JavaProject.BankTransactionService.model.User;
 import com.JavaProject.BankTransactionService.service.serviceImpl.TransactionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +26,7 @@ public class TransactionAPI {
     }
 
     @GetMapping("/exceededLimit/{userId}/{expenseCategory}")
-    public List<TransactionDto> getTransactionsExceedingLimit(@PathVariable Long userId, @PathVariable String expenseCategory) {
+    public List<TransactionDto> getTransactionsExceedingLimit(@PathVariable(value = "userId") Long userId, @PathVariable(value = "expenseCategory") String expenseCategory) {
         return transactionServiceImpl.getTransactionsExceedingLimit(userId, expenseCategory);
     }
 

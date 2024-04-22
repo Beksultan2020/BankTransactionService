@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -23,4 +24,8 @@ public class TransactionDto {
     private boolean limitExceeded;
     private boolean limitExceededMonthly;
     private User user;
+
+    private BigDecimal limitSum;
+    private LocalDateTime limitDateTime;
+    private String limitCurrencyShortname;
 }
