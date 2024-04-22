@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "d474b234-cc09-4ace-993c-a517806fcf1c",
+		"name": "TransactionAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32354320",
+		"_collection_link": "https://universal-zodiac-383556.postman.co/workspace/BankTransactionProject~fdb7da15-d7b6-4c94-b155-537171d3a5ef/collection/32354320-d474b234-cc09-4ace-993c-a517806fcf1c?action=share&source=collection_link&creator=32354320"
+	},
+	"item": [
+		{
+			"name": "getAllTransactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTransactionById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/transactions/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"transactions",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTransactionsExceedingLimit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/transactions/exceededLimit/4/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"transactions",
+						"exceededLimit",
+						"4",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createTransaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"accountFrom\": \"1234567890\",\r\n  \"accountTo\": \"9876543210\",\r\n  \"currencyShortname\": \"USD\",\r\n  \"sum\": 5500.00,\r\n  \"expenseCategory\": \"product\",\r\n  \"user\": {\r\n    \"id\": 4\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteTransaction",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/transactions/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"transactions",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "af4c920c-7e04-468b-b498-bb572bfc998e",
+		"name": "UserAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32354320",
+		"_collection_link": "https://universal-zodiac-383556.postman.co/workspace/BankTransactionProject~fdb7da15-d7b6-4c94-b155-537171d3a5ef/collection/32354320-af4c920c-7e04-468b-b498-bb572bfc998e?action=share&source=collection_link&creator=32354320"
+	},
+	"item": [
+		{
+			"name": "getAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"John Doe 4\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/users/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"users",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

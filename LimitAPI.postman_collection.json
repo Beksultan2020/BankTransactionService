@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "5254f161-46a8-4bcc-be42-11fd8032e2ff",
+		"name": "LimitAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32354320",
+		"_collection_link": "https://universal-zodiac-383556.postman.co/workspace/BankTransactionProject~fdb7da15-d7b6-4c94-b155-537171d3a5ef/collection/32354320-5254f161-46a8-4bcc-be42-11fd8032e2ff?action=share&source=collection_link&creator=32354320"
+	},
+	"item": [
+		{
+			"name": "getLimit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/limits/1/Groceries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"limits",
+						"1",
+						"Groceries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "setLimit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": {\r\n    \"id\": 4\r\n  },\r\n  \"expenseCategory\": \"product\",\r\n  \"limitSum\": 600.00\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/limits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"limits"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

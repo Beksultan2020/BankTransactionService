@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "04ffa3b3-829a-4fa3-9442-1c394b33fea6",
+		"name": "ExchangeRateAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32354320",
+		"_collection_link": "https://universal-zodiac-383556.postman.co/workspace/BankTransactionProject~fdb7da15-d7b6-4c94-b155-537171d3a5ef/collection/32354320-04ffa3b3-829a-4fa3-9442-1c394b33fea6?action=share&source=collection_link&creator=32354320"
+	},
+	"item": [
+		{
+			"name": "getExchangeRate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/exchangeRates/USD/KZT",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"exchangeRates",
+						"USD",
+						"KZT"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
